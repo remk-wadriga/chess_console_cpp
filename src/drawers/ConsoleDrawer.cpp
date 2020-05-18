@@ -3,6 +3,23 @@
 
 using namespace std;
 
+#define U_WHITE_SQUARE "\u25A0"
+#define U_BLACK_SQUARE "\u2610"
+
+#define U_FIGURE_KING_BLACK "\u2654";
+#define U_FIGURE_QUEEN_BLACK "\u2655";
+#define U_FIGURE_ROOK_BLACK "\u2656";
+#define U_FIGURE_BISHOP_BLACK "\u2657";
+#define U_FIGURE_KNIGHT_BLACK "\u2658";
+#define U_FIGURE_PAWN_BLACK "\u2659";
+
+#define U_FIGURE_KING_WHITE "\u265A";
+#define U_FIGURE_QUEEN_WHITE "\u265B";
+#define U_FIGURE_ROOK_WHITE "\u265C";
+#define U_FIGURE_BISHOP_WHITE "\u265D";
+#define U_FIGURE_KNIGHT_WHITE "\u265E";
+#define U_FIGURE_PAWN_WHITE "\u265F";
+
 class ConsoleDrawer : public AbstractDrawer
 {
 public:
@@ -25,15 +42,20 @@ public:
 
     void drawFieldCell(Cell* cell)
     {
-        cout << "&";
+        AbstractFigure* figure = cell->getFigure();
+        if (figure == NULL) {
+            cout << U_WHITE_SQUARE;
+        } else {
+            cout << U_FIGURE_PAWN_WHITE;
+        }
     }
 private:
     void drawTopSection()
     {
         drawLines(2, 31, '*');
         cout << "\n";
-        drawLetters();
-        cout << "\n";
+        //drawLetters();
+        //cout << "\n";
     }
 
     void drawBottomSection()

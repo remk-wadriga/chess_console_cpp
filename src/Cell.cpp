@@ -1,7 +1,5 @@
 #include <iostream>
 
-enum Color {COLOR_BLACK, COLOR_WHITE};
-
 class Cell
 {
 public:
@@ -9,6 +7,7 @@ public:
     {
         _coordinate = coordinate;
         _color = color;
+        _figure = NULL;
     }
 
     std::string getCoordinate()
@@ -20,7 +19,17 @@ public:
     {
         return _color;
     }
+
+    void setFigure(AbstractFigure* figure)
+    {
+        _figure = figure;
+    }
+    AbstractFigure* getFigure()
+    {
+        return _figure;
+    }
 private:
     std::string _coordinate;
     Color _color;
+    AbstractFigure* _figure;
 };

@@ -12,11 +12,6 @@ public:
         }
     }
 
-    void addCell(int x, int y)
-    {
-        _cells[x][y] = new Cell(calculateCoordinate(x, y), calculateCellColor(x, y));
-    }
-
     char getLetter(int x)
     {
         return _letters[x];
@@ -29,6 +24,14 @@ public:
 private:
     char _letters[8] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
     Cell* _cells[8][8];
+
+    void addCell(int x, int y)
+    {
+        _cells[x][y] = new Cell(calculateCoordinate(x, y), calculateCellColor(x, y));
+        if (x == 0 && y == 0) {
+            _cells[x][y]->setFigure(new Pawn(COLOR_WHITE));
+        }
+    }
 
     std::string calculateCoordinate(int x, int y)
     {
